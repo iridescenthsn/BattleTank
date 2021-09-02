@@ -19,6 +19,12 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 	
 }
+
+void ATank::Fire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Tank Fired!!"));
+}
+
 void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation,LaunchSpeed);
