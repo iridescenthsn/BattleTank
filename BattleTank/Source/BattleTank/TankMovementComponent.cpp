@@ -14,15 +14,17 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
 	auto AiForwardIntention = MoveVelocity.GetSafeNormal();
 
+	auto TurnThrow = FVector::CrossProduct(TankForward,AiForwardIntention );
 	auto ForwardThrow = FVector::DotProduct(TankForward, AiForwardIntention);
 
 	IntendMoveForward(ForwardThrow);
-	UE_LOG(LogTemp, Warning, TEXT("dot product: %f "), ForwardThrow);
+	IntendTurnRight(TurnThrow.Z);
+	//UE_LOG(LogTemp, Warning, TEXT("dot product: %f "), ForwardThrow);
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	if (!LeftTrack || !RightTrack)
+	if (!ensure(LeftTrack || !RightTrack))
 	{
 		return;
 	}
@@ -32,7 +34,7 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
 {
-	if (!LeftTrack || !RightTrack)
+	if (!ensure(LeftTrack || !RightTrack))
 	{
 		return;
 	}
