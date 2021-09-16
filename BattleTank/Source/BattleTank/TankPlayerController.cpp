@@ -50,9 +50,9 @@ bool ATankPlayerController::GetSightHitLocation(FVector& HitLocation) const
 	if (GetLookDirection(ScreenLocation,LookDiretion))
 	{
 		//line trace that direction and see where in the world we hit(up to max range)
-		GetLookVectorHitLocaion(LookDiretion, HitLocation);
+		return GetLookVectorHitLocaion(LookDiretion, HitLocation);
 	}
-	return true;
+	return false;
 }
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
