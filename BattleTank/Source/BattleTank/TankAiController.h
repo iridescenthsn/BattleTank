@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include "CoreMinimal.h"
+#include "CoreMinimal.h"	
 #include "AIController.h"
 #include "TankAiController.generated.h"
 
@@ -15,9 +15,11 @@ class BATTLETANK_API ATankAiController : public AAIController
 {
 	GENERATED_BODY()
 
-public:
-	void Tick(float DeltaTime) override;
+protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float AcceptanceRadius = 14000;
 
 private:
-	float AcceptanceRadius = 3000;
+	void Tick(float DeltaTime) override;
 };
