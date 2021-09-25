@@ -86,6 +86,11 @@ void UTankAimingComponent::Fire()
 	}
 }
 
+int32 UTankAimingComponent::GetAmmo() const
+{
+	return Ammo;
+}
+
 EFiringState UTankAimingComponent::GetFiringState() const
 {
 	return FiringState;

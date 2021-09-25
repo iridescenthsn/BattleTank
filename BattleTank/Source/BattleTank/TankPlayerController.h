@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include "CoreMinimal.h"
+#include "CoreMinimal.h"	
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
@@ -39,6 +39,11 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 
 	bool GetLookVectorHitLocaion(FVector LookDirection, FVector& Hitlocation) const;
+
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
 
 public:
 	void Tick(float Deltatime) override;

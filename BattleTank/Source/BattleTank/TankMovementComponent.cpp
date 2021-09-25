@@ -19,8 +19,8 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	IntendMoveForward(ForwardThrow);
 	IntendTurnRight(TurnThrow.Z);
-	//UE_LOG(LogTemp, Warning, TEXT("dot product: %f "), ForwardThrow);
 }
+
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {

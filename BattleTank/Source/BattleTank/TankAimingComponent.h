@@ -38,9 +38,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly,Category="State")
 	EFiringState FiringState = EFiringState::Reloading;
 
-	UPROPERTY(BlueprintReadOnly)
-	int32 Ammo = 3;
-
 public:	
 
 	// Called every frame
@@ -50,6 +47,9 @@ public:
 
 	UFUNCTION(BlueprintCallable,Category="Firing")
 	void Fire();
+
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+	int32 GetAmmo() const;
 
 	EFiringState GetFiringState() const;
 
@@ -70,7 +70,12 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float ReloadTime = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	int32 Ammo = 3;
+
 	double LastFireTime = 0;
 
 	void MoveBarrel();
